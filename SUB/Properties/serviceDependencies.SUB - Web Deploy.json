@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "mssql1": {
+    "mssql2": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/subdbserver/databases/SUB_db",
       "type": "mssql.azure",
-      "connectionId": "DefaultConnection",
+      "connectionId": "SUB_db",
       "secretStore": "AzureAppSettings"
     }
   }
