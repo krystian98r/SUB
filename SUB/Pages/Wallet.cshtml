@@ -6,8 +6,15 @@
 
 <div>
     <p class="subsite-header"><img src="https://www.freeiconspng.com/thumbs/wallet-icon/06-wallet-icon--swanky-outlines-iconset--pixelkit-14.png" />Portfel <hr /> </p>
-    <p>Tutaj będzie portfel, wpłaty itd</p>
-    <h1>Saldo: 0 PLN</h1>
-    <button>WPŁAĆ</button>
-    <button>WYPŁAĆ</button>
+    <p><i>Minimalna kwota transakcji to 10 PLN</i></p>
+        <h1>Saldo: 0 PLN</h1>
+        <table>
+            <tr>
+                <td colspan="2"><input type="number" step="0.01" min="10" /></td>
+            </tr>
+            <tr>
+                <td><button class="wallet-btn" type="submit" name="Wplac">WPŁAĆ</button></td>
+                <td><button class="wallet-btn" type="submit" name="Wyplac">WYPŁAĆ</button></td>
+            </tr>
+    </table>
 </div>
