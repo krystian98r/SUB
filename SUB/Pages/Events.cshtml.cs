@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SUB.Pages
 {
+    /// <summary>
+    /// Klasa reprezentuj¹ca podstronê "Wydarzenia sportowe" oraz jej funckje
+    /// </summary>
     public class EventsModel : PageModel
     {
         public void OnGet()

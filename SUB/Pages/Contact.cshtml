@@ -9,16 +9,31 @@
     <p class="subsite-header"><img src="https://www.pikpng.com/pngl/m/115-1157183_contacts-transparent-icons-png-download-contact-us-icon.png" />Kontakt <hr /> </p>
     <p>Kontakt z działem technicznym</p>
     <form method="post">
-        <fieldset>Kategoria zgłoszenia 
-            <select id="Kategoria_zgloszenia">
-                <option value=""></option>
-                <option value="0">Problem z kontem</option>
-                <option value="1">Problem z kuponem</option>
-                <option value="2">Inne</option>
-            </select>
-        </fieldset>
-        Treść zgłoszenia
-        <input type="text" /><br />
-        <input type="submit" />
+        <table>
+            <tr>
+                <th class="form-table-td">Adres e-mail</th>
+                <td class="form-table-td"><input type="text" /></td>
+            </tr>
+            <tr>
+                <fieldset>
+                    <th class="form-table-td">Kategoria zgłoszenia</th>
+                    <td class="form-table-td"><select id="Kategoria_zgloszenia">
+                        <option value=""></option>
+                        <option value="0">Problem z kontem</option>
+                        <option value="1">Problem z kuponem</option>
+                        <option value="2">Inne</option>
+                    </select></td>
+                </fieldset>
+            </tr>
+            <tr>
+                <th class="form-table-td">Treść zgłoszenia</th>
+                <td class="form-table-td">
+                    <textarea rows="4" cols="40" wrap="hard" maxlength="200">Wprowadź dokładny opis...</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-table-td" colspan="2"><input type="submit" /></td>
+            </tr>
+        </table>
     </form>
 </div>

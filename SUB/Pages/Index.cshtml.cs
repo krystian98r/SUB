@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SUB.Pages
 {
+    /// <summary>
+    /// Klasa reprezentująca stronę główną aplikacji oraz jej funckje
+    /// </summary>
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;

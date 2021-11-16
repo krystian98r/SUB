@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SUB</name>
+    </assembly>
+    <members>
+        <member name="T:SUB.Pages.AboutModel">
+            <summary>
+            Klasa reprezentująca podstronę "O nas" oraz jej funckje
+            </summary>
+        </member>
+        <member name="T:SUB.Pages.ContactModel">
+            <summary>
+            Klasa reprezentująca podstronę "Kontakt" oraz jej funckje
+            </summary>
+        </member>
+        <member name="T:SUB.Pages.CouponsModel">
+            <summary>
+            Klasa reprezentująca podstronę "Kupony" oraz jej funckje
+            </summary>
+        </member>
+        <member name="T:SUB.Pages.EventsModel">
+            <summary>
+            Klasa reprezentująca podstronę "Wydarzenia sportowe" oraz jej funckje
+            </summary>
+        </member>
+        <member name="T:SUB.Pages.IndexModel">
+            <summary>
+            Klasa reprezentująca stronę główną aplikacji oraz jej funckje
+            </summary>
+        </member>
+        <member name="T:SUB.Pages.WalletModel">
+            <summary>
+            Klasa reprezentująca podstronę "Portfel" oraz jej funckje
+            </summary>
+        </member>
+        <member name="M:SUB.Pages.WalletModel.DoladujSrodki(System.Double)">
+            <summary>Metoda dodająca środki do portfela</summary>
+            <param name="srodki">Ilość funduszy wpłacana do portfela.</param>
+        </member>
+        <member name="M:SUB.Pages.WalletModel.WyplacSrodki(System.Double,System.String)">
+            <summary>
+            Metoda wypłacająca środki z portfela na zewnętrzne konto
+            </summary>
+            <param name="srodki">Ilość funduszy wypłacanych z portfela</param>
+            <param name="numerKonta"></param>
+        </member>
+        <member name="T:SUB.Properties.Resources">
+            <summary>
+              Klasa zasobu wymagająca zdefiniowania typu do wyszukiwania zlokalizowanych ciągów itd.
+            </summary>
+        </member>
+        <member name="P:SUB.Properties.Resources.ResourceManager">
+            <summary>
+            Zwraca buforowane wystąpienie ResourceManager używane przez tę klasę.
+            </summary>
+        </member>
+        <member name="P:SUB.Properties.Resources.Culture">
+            <summary>
+              Przesłania właściwość CurrentUICulture bieżącego wątku dla wszystkich
+              przypadków przeszukiwania zasobów za pomocą tej klasy zasobów wymagającej zdefiniowania typu.
+            </summary>
+        </member>
+    </members>
+</doc>

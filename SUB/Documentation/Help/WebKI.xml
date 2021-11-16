@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AboutModel class">
+    <HelpKINode Title="AboutModel Class" Url="html/9b896f85-ad69-3ff7-a9ea-542270eba225.htm" />
+    <HelpKINode Title="constructor" Url="html/eab5325f-1771-cd52-b85e-63a2b93cbbe0.htm" />
+    <HelpKINode Title="methods" Url="html/153ff437-1baf-1a7e-562c-9aa5ddb3c430.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AboutModel.AboutModel constructor" Url="html/eab5325f-1771-cd52-b85e-63a2b93cbbe0.htm" />
+  <HelpKINode Title="AboutModel.OnGet method" Url="html/fae02215-da55-a625-794d-247245c63de4.htm" />
+  <HelpKINode Title="ContactModel class">
+    <HelpKINode Title="ContactModel Class" Url="html/68adbbda-2c31-2ec2-59c4-5e3a976ca4cd.htm" />
+    <HelpKINode Title="constructor" Url="html/deb45970-ac8c-0362-647b-9cc2912db342.htm" />
+    <HelpKINode Title="methods" Url="html/8e0c04db-244f-30fd-f517-f70ab3238600.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ContactModel.ContactModel constructor" Url="html/deb45970-ac8c-0362-647b-9cc2912db342.htm" />
+  <HelpKINode Title="ContactModel.OnGet method" Url="html/6cedfe71-b27a-eb4c-0f44-f8856142e221.htm" />
+  <HelpKINode Title="CouponsModel class">
+    <HelpKINode Title="CouponsModel Class" Url="html/abc7b950-3cb5-c1cf-719b-e1c0998e9505.htm" />
+    <HelpKINode Title="constructor" Url="html/240f1694-1db0-0228-667d-67cf247e537a.htm" />
+    <HelpKINode Title="methods" Url="html/b88c49d3-74c8-871b-019d-95fcbcd4e35b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CouponsModel.CouponsModel constructor" Url="html/240f1694-1db0-0228-667d-67cf247e537a.htm" />
+  <HelpKINode Title="CouponsModel.OnGet method" Url="html/78ab9ad3-df96-f4d7-bdea-e3743dbfdba3.htm" />
+  <HelpKINode Title="DoladujSrodki method" Url="html/107578e7-5ec1-83a0-531f-1e1ed79308d5.htm" />
+  <HelpKINode Title="ErrorModel class">
+    <HelpKINode Title="ErrorModel Class" Url="html/dcd8b1d5-3c4a-2335-dddc-f5f60c66b537.htm" />
+    <HelpKINode Title="constructor" Url="html/800281fe-aace-6d41-bb5e-b24e68b66a88.htm" />
+    <HelpKINode Title="methods" Url="html/75e905a4-022d-7cd5-9b81-a6eca8bded00.htm" />
+    <HelpKINode Title="properties" Url="html/40960110-7307-2755-eda7-0d76419ebf16.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ErrorModel.ErrorModel constructor" Url="html/800281fe-aace-6d41-bb5e-b24e68b66a88.htm" />
+  <HelpKINode Title="ErrorModel.OnGet method" Url="html/15503935-2d78-b9ae-d6c1-8ea6d3a1aac8.htm" />
+  <HelpKINode Title="ErrorModel.RequestId property" Url="html/3d334ce1-1373-da16-e1f2-caa16f7eb462.htm" />
+  <HelpKINode Title="ErrorModel.ShowRequestId property" Url="html/1cfa599b-5f14-9605-942b-9499407d3da7.htm" />
+  <HelpKINode Title="EventsModel class">
+    <HelpKINode Title="EventsModel Class" Url="html/09371572-3374-46b8-490a-a2fb1eee902f.htm" />
+    <HelpKINode Title="constructor" Url="html/7036fc94-6168-f3f8-b2b1-b2520e4b9dd8.htm" />
+    <HelpKINode Title="methods" Url="html/ba31fa21-83a8-6295-22f7-b8214f1a35c5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EventsModel.EventsModel constructor" Url="html/7036fc94-6168-f3f8-b2b1-b2520e4b9dd8.htm" />
+  <HelpKINode Title="EventsModel.OnGet method" Url="html/30a31d21-8138-f44e-0c7f-c7082730f674.htm" />
+  <HelpKINode Title="IndexModel class">
+    <HelpKINode Title="IndexModel Class" Url="html/75cf9847-6a6c-e435-88a0-48095da84df7.htm" />
+    <HelpKINode Title="constructor" Url="html/a34e996c-54f2-5c1b-51f0-e87c86df3b45.htm" />
+    <HelpKINode Title="methods" Url="html/a3b6f650-96ab-033e-a4a0-2124b218df38.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexModel.IndexModel constructor" Url="html/a34e996c-54f2-5c1b-51f0-e87c86df3b45.htm" />
+  <HelpKINode Title="IndexModel.OnGet method" Url="html/d4fbdaf7-af9e-ab81-f03f-e8991db700bf.htm" />
+  <HelpKINode Title="OnGet method">
+    <HelpKINode Title="AboutModel.OnGet Method " Url="html/fae02215-da55-a625-794d-247245c63de4.htm" />
+    <HelpKINode Title="ContactModel.OnGet Method " Url="html/6cedfe71-b27a-eb4c-0f44-f8856142e221.htm" />
+    <HelpKINode Title="CouponsModel.OnGet Method " Url="html/78ab9ad3-df96-f4d7-bdea-e3743dbfdba3.htm" />
+    <HelpKINode Title="ErrorModel.OnGet Method " Url="html/15503935-2d78-b9ae-d6c1-8ea6d3a1aac8.htm" />
+    <HelpKINode Title="EventsModel.OnGet Method " Url="html/30a31d21-8138-f44e-0c7f-c7082730f674.htm" />
+    <HelpKINode Title="IndexModel.OnGet Method " Url="html/d4fbdaf7-af9e-ab81-f03f-e8991db700bf.htm" />
+    <HelpKINode Title="WalletModel.OnGet Method " Url="html/8a5fa1f0-7fc6-e29e-9f41-e3150ccd2ea5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RequestId property" Url="html/3d334ce1-1373-da16-e1f2-caa16f7eb462.htm" />
+  <HelpKINode Title="ShowRequestId property" Url="html/1cfa599b-5f14-9605-942b-9499407d3da7.htm" />
+  <HelpKINode Title="SUB.Pages namespace" Url="html/ef59e151-a6b8-9e65-eaad-a1c2cc413977.htm" />
+  <HelpKINode Title="SUB.Pages.AboutModel class" Url="html/9b896f85-ad69-3ff7-a9ea-542270eba225.htm" />
+  <HelpKINode Title="SUB.Pages.ContactModel class" Url="html/68adbbda-2c31-2ec2-59c4-5e3a976ca4cd.htm" />
+  <HelpKINode Title="SUB.Pages.CouponsModel class" Url="html/abc7b950-3cb5-c1cf-719b-e1c0998e9505.htm" />
+  <HelpKINode Title="SUB.Pages.ErrorModel class" Url="html/dcd8b1d5-3c4a-2335-dddc-f5f60c66b537.htm" />
+  <HelpKINode Title="SUB.Pages.EventsModel class" Url="html/09371572-3374-46b8-490a-a2fb1eee902f.htm" />
+  <HelpKINode Title="SUB.Pages.IndexModel class" Url="html/75cf9847-6a6c-e435-88a0-48095da84df7.htm" />
+  <HelpKINode Title="SUB.Pages.WalletModel class" Url="html/a4cce419-9740-4dc1-c6d3-7c8b2eddba52.htm" />
+  <HelpKINode Title="WalletModel class">
+    <HelpKINode Title="WalletModel Class" Url="html/a4cce419-9740-4dc1-c6d3-7c8b2eddba52.htm" />
+    <HelpKINode Title="constructor" Url="html/2aa944af-f2af-d89f-1e4b-4ca059a0ee71.htm" />
+    <HelpKINode Title="methods" Url="html/df20d0ce-a264-e952-92e6-f474b88768ef.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WalletModel.DoladujSrodki method" Url="html/107578e7-5ec1-83a0-531f-1e1ed79308d5.htm" />
+  <HelpKINode Title="WalletModel.OnGet method" Url="html/8a5fa1f0-7fc6-e29e-9f41-e3150ccd2ea5.htm" />
+  <HelpKINode Title="WalletModel.WalletModel constructor" Url="html/2aa944af-f2af-d89f-1e4b-4ca059a0ee71.htm" />
+  <HelpKINode Title="WalletModel.WyplacSrodki method" Url="html/8c7cb2f5-0b3a-3374-0097-890c353f2cf9.htm" />
+  <HelpKINode Title="WyplacSrodki method" Url="html/8c7cb2f5-0b3a-3374-0097-890c353f2cf9.htm" />
+</HelpKI>
