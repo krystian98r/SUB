@@ -34,17 +34,6 @@
             Klasa reprezentująca podstronę "Portfel" oraz jej funckje
             </summary>
         </member>
-        <member name="M:SUB.Pages.WalletModel.DoladujSrodki(System.Double)">
-            <summary>Metoda dodająca środki do portfela</summary>
-            <param name="srodki">Ilość funduszy wpłacana do portfela.</param>
-        </member>
-        <member name="M:SUB.Pages.WalletModel.WyplacSrodki(System.Double,System.String)">
-            <summary>
-            Metoda wypłacająca środki z portfela na zewnętrzne konto
-            </summary>
-            <param name="srodki">Ilość funduszy wypłacanych z portfela</param>
-            <param name="numerKonta"></param>
-        </member>
         <member name="T:SUB.Properties.Resources">
             <summary>
               Klasa zasobu wymagająca zdefiniowania typu do wyszukiwania zlokalizowanych ciągów itd.

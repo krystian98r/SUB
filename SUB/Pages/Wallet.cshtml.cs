@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SUB.Models;
 
 namespace SUB.Pages
 {
@@ -12,23 +13,25 @@ namespace SUB.Pages
     /// </summary>
     public class WalletModel : PageModel
     {
+        [BindProperty]
+        public PortfelModel Portfel { get; set; }
+        public double Srodki { get; set; }
+        
         public void OnGet()
         {
+            
         }
-        /// <summary>Metoda dodaj¹ca œrodki do portfela</summary>
-        /// <param name="srodki">Iloœæ funduszy wp³acana do portfela.</param>
-        public void DoladujSrodki (double srodki)
-        {
 
-        }
-        /// <summary>
-        /// Metoda wyp³acaj¹ca œrodki z portfela na zewnêtrzne konto
-        /// </summary>
-        /// <param name="srodki">Iloœæ funduszy wyp³acanych z portfela</param>
-        /// <param name="numerKonta"></param>
-        public void WyplacSrodki (double srodki, String numerKonta)
+        public IActionResult OnPost()
         {
+            if (ModelState.IsValid == false)
+            {
+                return Page();
+            }
 
+            // Tutaj zapisz model do bazy danych
+
+            return RedirectToPage("/Index", new { Portfel.Srodki });
         }
     }
 }
