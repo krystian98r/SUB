@@ -1,0 +1,57 @@
+﻿@page
+@model SUB.Pages.Contact.CreateModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Kontakt - nowe zgłoszenie";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Nowe zgłoszenie</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <input asp-for="Zgloszenie.UzytkownikId" class="form-control" value="@UserManager.GetUserId(User)" hidden>
+                }
+            <div class="form-group">
+                <label asp-for="Zgloszenie.Email" class="control-label"></label>
+                <input asp-for="Zgloszenie.Email" class="form-control" />
+                <span asp-validation-for="Zgloszenie.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zgloszenie.Tresc" class="control-label"></label>
+                <textarea asp-for="Zgloszenie.Tresc" class="form-control"></textarea>
+                <span asp-validation-for="Zgloszenie.Tresc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zgloszenie.Kategoria" class="control-label"></label>
+                <select asp-for="Zgloszenie.Kategoria" class="form-control">
+                    <option value=""></option>
+                    <option value="Logowanie">Logowanie</option>
+                    <option value="Konto użytownika">Konto użytownika</option>
+                    <option value="Kupony">Kupony</option>
+                    <option value="Portfel">Portfel</option>
+                    <option value="Działanie aplikacji">Działanie aplikacji</option>
+                    <option value="Inne">Inne</option>
+                </select>
+                <span asp-validation-for="Zgloszenie.Kategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz zgłoszenie" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="List">Przejdź do listy zgłoszeń</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
