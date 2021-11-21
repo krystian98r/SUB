@@ -34,7 +34,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Events/List">Wydarzenia sportowe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Coupons">Kupony</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Coupons/Create">Kupony</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Wallet">Portfel</a>
@@ -48,7 +48,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Strona główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Kontakt</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact/Create">Kontakt</a>
                         </li>
 
                         <li class="nav-item">
@@ -70,7 +70,7 @@
         @if (SignInManager.IsSignedIn(User))
         {
         <div class="container">
-            &copy; 2021 - WRŻ-POL - <a asp-area="" asp-page="/Contact">Kontakt</a> - <a asp-area="" asp-page="/About">O nas</a>
+            &copy; 2021 - WRŻ-POL - <a asp-area="" asp-page="/Contact/Create">Kontakt</a> - <a asp-area="" asp-page="/About">O nas</a>
         </div>
         }
         else
