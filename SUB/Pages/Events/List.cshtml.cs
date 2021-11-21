@@ -10,11 +10,11 @@ using SUB.Models;
 
 namespace SUB.Areas.Events.Pages
 {
-    public class IndexModel : PageModel
+    public class ListModel : PageModel
     {
         private readonly SUB.Data.SUBContext _context;
 
-        public IndexModel(SUB.Data.SUBContext context)
+        public ListModel(SUB.Data.SUBContext context)
         {
             _context = context;
         }

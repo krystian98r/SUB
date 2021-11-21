@@ -1,5 +1,5 @@
 ﻿@page
-@model SUB.Areas.Events.Pages.IndexModel
+@model SUB.Areas.Events.Pages.ListModel
 
 @{
     ViewData["Title"] = "Lista wydarzeń";
@@ -25,25 +25,25 @@
         </tr>
         <tr>
             <th>
-                Gospodarz
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].Gospodarz)
             </th>
             <th>
-                Gość
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].Gosc)
             </th>
             <th>
-                Zwycięstwo gospodarza
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGospodarz)
             </th>
             <th>
-                Zwycięstwo gości
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGosc)
             </th>
             <th>
-                Remis
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].Remis)
             </th>
-            <th rowspan="2">
+            <th>
                 @Html.DisplayNameFor(model => model.Wydarzenie[0].Data)
             </th>
-            <th rowspan="2">
-                Wynik
+            <th>
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].WynikWydarzenia)
             </th>
             <th></th>
         </tr>
