@@ -89,3 +89,13 @@ body {
 .wallet-btn {
     width: 100%;
 }
+
+.col-sm-2 {
+    white-space: nowrap;
+    width: auto !important;
+}
+
+.col-sm-10 {
+    white-space: nowrap;
+    width: auto;
+}

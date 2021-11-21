@@ -1,11 +1,8 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets"
-    },
-    "mssql2": {
+    "mssql5": {
       "type": "mssql",
-      "connectionId": "SUB_db"
+      "connectionId": "SUBContext"
     }
   }
 }

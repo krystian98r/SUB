@@ -4,6 +4,126 @@
         <name>SUB</name>
     </assembly>
     <members>
+        <member name="T:SUB.Models.Kupon">
+            <summary>
+            Klasa reprezentująca Kupon.
+            </summary>
+        </member>
+        <member name="P:SUB.Models.Kupon.Id">
+            <summary>
+            Pobiera lub ustawia identyfikator - pole Id.
+            </summary>
+            <value>
+            Identyfikator kuponu.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.IdUzytkownik">
+            <summary>
+            Pobiera lub ustawia pole IdUzytkownik
+            </summary>
+            <value>
+            Identyfikator użytkownika, do którego należy kupon.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.IdWydarzenie">
+            <summary>
+            Pobiera lub ustawia pole IdWydarzenia.
+            </summary>
+            <value>
+            Identyfikator wydarzenia, którego dotyczy kupon.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.Srodki">
+            <summary>
+            Pobiera lub ustawia pole Srodki.
+            </summary>
+            <value>
+            Środki przeznaczone na utworzenie tego kuponu.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.ObstawionyKurs">
+            <summary>
+            Pobiera lub ustawia pole ObstawionyKurs.
+            </summary>
+            <value>
+            Obstawiony kurs przyjmuje trzy wartości:
+            0 - wygrana gospodarzy
+            1 - wygrana gości
+            2 - remis
+            </value>
+        </member>
+        <member name="T:SUB.Models.Wydarzenie">
+            <summary>
+            Klasa rezprezentująca Wydarzenie
+            </summary>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.Id">
+            <summary>
+            Pobiera lub ustawia identyfikator.
+            </summary>
+            <value>
+            Identyfikator wydarzenia.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.Gospodarz">
+            <summary>
+            Pobiera lub ustawia pole Gospodarz.
+            </summary>
+            <value>
+            Gospodarz wydarzenia sportowego.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.Gosc">
+            <summary>
+            Pobiera lub ustawia pole Gosc.
+            </summary>
+            <value>
+            Gosc wydarzenia sportowego.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.ZwyciestwoGospodarz">
+            <summary>
+            Pobiera lub ustawia pole ZwyciestwoGospodarz.
+            </summary>
+            <value>
+            Obowiązujący kurs na zwycięstwo gospodarza.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.ZwyciestwoGosc">
+            <summary>
+            Pobiera lub ustawia pole Gospodarz.
+            </summary>
+            <value>
+            Obowiązujący kurs na zwycięstwo Gościa
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.Remis">
+            <summary>
+            Pobiera lub ustawia pole Gospodarz.
+            </summary>
+            <value>
+            Obowiązujący kurs na remis.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.Data">
+            <summary>
+            Pobiera lub ustawia pole Gospodarz.
+            </summary>
+            <value>
+            Data oraz czas wydarzenia sportowego.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Wydarzenie.WynikWydarzenia">
+            <summary>
+            Pobiera lub ustawia pole Gospodarz.
+            </summary>
+            <value>
+            Wynik wydarzenia przyjmuje trzy wartości:
+            0 - zwycięstwo gospodarza
+            1 - zwycięstro gościa
+            2 - remis
+            </value>
+        </member>
         <member name="T:SUB.Pages.AboutModel">
             <summary>
             Klasa reprezentująca podstronę "O nas" oraz jej funckje
@@ -17,11 +137,6 @@
         <member name="T:SUB.Pages.CouponsModel">
             <summary>
             Klasa reprezentująca podstronę "Kupony" oraz jej funckje
-            </summary>
-        </member>
-        <member name="T:SUB.Pages.EventsModel">
-            <summary>
-            Klasa reprezentująca podstronę "Wydarzenia sportowe" oraz jej funckje
             </summary>
         </member>
         <member name="T:SUB.Pages.IndexModel">
