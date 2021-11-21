@@ -9,11 +9,18 @@ namespace SUB.Data
 {
     public class SUBContext : DbContext
     {
-        public SUBContext (DbContextOptions<SUBContext> options)
+        public SUBContext(DbContextOptions<SUBContext> options)
             : base(options)
         {
         }
 
         public DbSet<SUB.Models.Wydarzenie> Wydarzenie { get; set; }
+
+        public DbSet<SUB.Models.Zgloszenie> Zgloszenie { get; set; }
+        
+        public DbSet<SUB.Models.Portfel> Portfel { get; set; }
+        
+        public DbSet<SUB.Models.Kupon> Kupon { get; set; }
+
     }
 }

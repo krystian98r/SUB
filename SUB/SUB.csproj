@@ -19,10 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Contact.cshtml.cs" />
+    <Compile Remove="Pages\Contact\Details.cshtml.cs" />
     <Compile Remove="Pages\Events.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Contact.cshtml" />
+    <Content Remove="Pages\Contact\Details.cshtml" />
     <Content Remove="Pages\Events.cshtml" />
   </ItemGroup>
 
@@ -60,7 +64,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Contact\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

@@ -17,7 +17,7 @@
             Identyfikator kuponu.
             </value>
         </member>
-        <member name="P:SUB.Models.Kupon.IdUzytkownik">
+        <member name="P:SUB.Models.Kupon.Uzytkownik">
             <summary>
             Pobiera lub ustawia pole IdUzytkownik
             </summary>
@@ -25,12 +25,12 @@
             Identyfikator użytkownika, do którego należy kupon.
             </value>
         </member>
-        <member name="P:SUB.Models.Kupon.IdWydarzenie">
+        <member name="P:SUB.Models.Kupon.Wydarzenie">
             <summary>
             Pobiera lub ustawia pole IdWydarzenia.
             </summary>
             <value>
-            Identyfikator wydarzenia, którego dotyczy kupon.
+            Wydarzenie, którego dotyczy kupon.
             </value>
         </member>
         <member name="P:SUB.Models.Kupon.Srodki">
@@ -124,14 +124,68 @@
             2 - remis
             </value>
         </member>
+        <member name="P:SUB.Models.Zgloszenie.Id">
+            <summary>
+            Pobiera lub ustawia identyfikator - pole Id
+            </summary>
+            <value>
+            Identyfikator zgłoszenia.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.UzytkownikId">
+            <summary>
+            Pobiera lub ustawia identyfikator użytkownika dla zgłoszenia.
+            </summary>
+            <value>
+            Identyfikator użytkownika - połączenie z tabelą AspNetUser
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.Uzytkownik">
+            <summary>
+            Pobiera lub ustawia użytkownika dla zgłoszenia
+            </summary>
+            <value>
+            Identyfikator użytkownika - połączenie z tabelą AspNetUser
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.Email">
+            <summary>
+            Pobiera lub ustawia email.
+            </summary>
+            <value>
+            Adres email przypisany do zgłoszenia.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.Tresc">
+            <summary>
+            Pobiera lub ustawia treść.
+            </summary>
+            <value>
+            Treść zgłoszenia.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.Kategoria">
+            <summary>
+            Pobiera lub ustawia kategorie zgłoszenia.
+            </summary>
+            <value>
+            Kategoria zgłoszenia.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Zgloszenie.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            Status zgłoszenia, przyjmuje wartości:
+            "Przyjęte"
+            "W realizacji"
+            "Zakończone"
+            </value>
+        </member>
         <member name="T:SUB.Pages.AboutModel">
             <summary>
             Klasa reprezentująca podstronę "O nas" oraz jej funckje
-            </summary>
-        </member>
-        <member name="T:SUB.Pages.ContactModel">
-            <summary>
-            Klasa reprezentująca podstronę "Kontakt" oraz jej funckje
             </summary>
         </member>
         <member name="T:SUB.Pages.CouponsModel">
