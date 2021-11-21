@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,7 +24,15 @@ namespace SUB.Models
         /// Identyfikator użytkownika - połączenie z tabelą AspNetUser
         /// </value>
         [Display(Name = "Identyfikator użytkownika")]
-        public String? IdUzytkownik { get; set; }
+        public String? UzytkownikId { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia użytkownika dla zgłoszenia
+        /// </summary>
+        /// <value>
+        /// Identyfikator użytkownika - połączenie z tabelą AspNetUser
+        /// </value>
+        [ForeignKey("UzytkownikId")]
+        public  AspNetUsers Uzytkownik { get; set; }
         /// <summary>
         /// Pobiera lub ustawia email.
         /// </summary>

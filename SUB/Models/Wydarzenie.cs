@@ -33,6 +33,7 @@ namespace SUB.Models
         /// Gosc wydarzenia sportowego.
         /// </value>
         [Required(ErrorMessage = "Pole jest wymagane")]
+        [Display(Name = "Gość")]
         public String Gosc { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole ZwyciestwoGospodarz.
@@ -40,6 +41,7 @@ namespace SUB.Models
         /// <value>
         /// Obowiązujący kurs na zwycięstwo gospodarza.
         /// </value>
+        [Display(Name = "Zwycięstwo gospodarza")]
         public float? ZwyciestwoGospodarz { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Gospodarz.
@@ -47,6 +49,7 @@ namespace SUB.Models
         /// <value>
         /// Obowiązujący kurs na zwycięstwo Gościa
         /// </value>
+        [Display(Name = "Zwycięstwo gości")]
         public float? ZwyciestwoGosc { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Gospodarz.
@@ -74,8 +77,8 @@ namespace SUB.Models
         /// 1 - zwycięstro gościa
         /// 2 - remis
         /// </value>
-        [Display(Name = "Wynik wydarzenia")]
         [Range(0, 2, ErrorMessage = "Wprowadź jedną z wartości:<br>0 - wygrana gospodarzy<br>1 - wygrana gości<br>2 - remis")]
+        [Display(Name = "Wynik")]
         public int? WynikWydarzenia { get; set; }
     }
 }

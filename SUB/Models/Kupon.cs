@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace SUB.Models
 {
@@ -23,14 +20,16 @@ namespace SUB.Models
         /// <value>
         /// Identyfikator użytkownika, do którego należy kupon.
         /// </value>
-        public String IdUzytkownik { get; set; }
+        public AspNetUsers Uzytkownik { get; set; }
+        public int? UzytkownikId { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole IdWydarzenia.
         /// </summary>
         /// <value>
-        /// Identyfikator wydarzenia, którego dotyczy kupon.
+        /// Wydarzenie, którego dotyczy kupon.
         /// </value>
-        public int IdWydarzenie { get; set; }
+        public Wydarzenie Wydarzenie { get; set; }
+        public int WydarzenieId { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Srodki.
         /// </summary>
