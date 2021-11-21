@@ -1,0 +1,63 @@
+﻿@page
+@model SUB.Areas.Events.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Szczegóły wydarzenia";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Wydarzenie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Gospodarz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Gospodarz)
+        </dd>
+        <dt class="col-sm-2">
+           Gość
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Gosc)
+        </dd>
+        <dt class="col-sm-2">Kursy</dt><dd class="col-sm-10"></dd>
+        <dt class="col-sm-2">
+            Zwycięstwo gospodarzy
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.ZwyciestwoGospodarz)
+        </dd>
+        <dt class="col-sm-2">
+            Zwycięstwo gości
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.ZwyciestwoGosc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Remis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Remis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Data)
+        </dd>
+        <dt class="col-sm-2">
+            Wynik wydarzenia
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.WynikWydarzenia)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Wydarzenie.Id">Edytuj</a> |
+    <a asp-page="./List">Powrót do listy</a>
+</div>

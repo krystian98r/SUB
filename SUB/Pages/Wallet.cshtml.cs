@@ -14,7 +14,7 @@ namespace SUB.Pages
     public class WalletModel : PageModel
     {
         [BindProperty]
-        public PortfelModel Portfel { get; set; }
+        public Portfel Portfel { get; set; }
         public double Srodki { get; set; }
         
         public void OnGet()

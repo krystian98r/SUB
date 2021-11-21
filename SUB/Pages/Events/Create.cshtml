@@ -1,0 +1,65 @@
+﻿@page
+@model SUB.Areas.Events.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Tworzenie wydarzenia";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Tworzenie wydarzenia</h1>
+
+<h4>Wydarzenie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.Gospodarz" class="control-label"></label>
+                <input asp-for="Wydarzenie.Gospodarz" class="form-control" />
+                <span asp-validation-for="Wydarzenie.Gospodarz" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.Gosc" class="control-label">Gość</label>
+                <input asp-for="Wydarzenie.Gosc" class="form-control" />
+                <span asp-validation-for="Wydarzenie.Gosc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.ZwyciestwoGospodarz" class="control-label">Kurs na zwycięstwo gospodarza</label>
+                <input asp-for="Wydarzenie.ZwyciestwoGospodarz" class="form-control" />
+                <span asp-validation-for="Wydarzenie.ZwyciestwoGospodarz" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.ZwyciestwoGosc" class="control-label">Kurs na zwycięstwo gościa</label>
+                <input asp-for="Wydarzenie.ZwyciestwoGosc" class="form-control" />
+                <span asp-validation-for="Wydarzenie.ZwyciestwoGosc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.Remis" class="control-label">Kurs na remis</label>
+                <input asp-for="Wydarzenie.Remis" class="form-control" />
+                <span asp-validation-for="Wydarzenie.Remis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.Data" class="control-label">Data wydarzenia</label>
+                <input asp-for="Wydarzenie.Data" class="form-control" />
+                <span asp-validation-for="Wydarzenie.Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wydarzenie.WynikWydarzenia" class="control-label">Wynik wydarzenia</label>
+                <input asp-for="Wydarzenie.WynikWydarzenia" class="form-control" />
+                <span asp-validation-for="Wydarzenie.WynikWydarzenia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="List">Powrót do listy</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

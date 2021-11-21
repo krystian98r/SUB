@@ -1,0 +1,65 @@
+﻿@page
+@model SUB.Areas.Events.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Usuwanie wydarzenia";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Czy jesteś pewny, że chcesz usunąć te wydarzenie?</h3>
+<div>
+    <h4>Wydarzenie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Gospodarz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Gospodarz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Gosc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Gosc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.ZwyciestwoGospodarz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.ZwyciestwoGospodarz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.ZwyciestwoGosc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.ZwyciestwoGosc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Remis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Remis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.Data)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wydarzenie.WynikWydarzenia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wydarzenie.WynikWydarzenia)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Wydarzenie.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./List">Powrót do listy</a>
+    </form>
+</div>

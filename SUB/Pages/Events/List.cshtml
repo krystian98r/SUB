@@ -1,0 +1,83 @@
+﻿@page
+@model SUB.Areas.Events.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Lista wydarzeń";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<p class="subsite-header"><img src="https://toppng.com/uploads/preview/event-accepted-filled-icon-event-icon-11553508126tpo9z8k2ym.png" />Wydarzenia sportowe <hr /> </p>
+<p>
+    <a asp-page="Create">Utwórz nowe wydarzenie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">
+                Strony wydarzenia
+            </th>
+            <th colspan="3">
+                Kurs
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>
+                Gospodarz
+            </th>
+            <th>
+                Gość
+            </th>
+            <th>
+                Zwycięstwo gospodarza
+            </th>
+            <th>
+                Zwycięstwo gości
+            </th>
+            <th>
+                Remis
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model.Wydarzenie[0].Data)
+            </th>
+            <th rowspan="2">
+                Wynik
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Wydarzenie) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gospodarz)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZwyciestwoGospodarz)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZwyciestwoGosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynikWydarzenia)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Więcej</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
