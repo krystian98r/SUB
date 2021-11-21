@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SUB.Models
+{
+    public class Zgloszenie
+    {
+        /// <summary>
+        /// Pobiera lub ustawia identyfikator - pole Id
+        /// </summary>
+        /// <value>
+        /// Identyfikator zgłoszenia.
+        /// </value>
+        public int Id { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia identyfikator użytkownika dla zgłoszenia.
+        /// </summary>
+        /// <value>
+        /// Identyfikator użytkownika - połączenie z tabelą AspNetUser
+        /// </value>
+        [Display(Name = "Identyfikator użytkownika")]
+        public String? IdUzytkownik { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia email.
+        /// </summary>
+        /// <value>
+        /// Adres email przypisany do zgłoszenia.
+        /// </value>
+        [Required(ErrorMessage = "Pole jest wymagane<br>Na ten adres otrzymasz odpowiedź")]
+        [EmailAddress(ErrorMessage = "Podaj poprawny adres e-mail")]
+        [Display(Name = "Adres e-mail")]
+        public String Email { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia treść.
+        /// </summary>
+        /// <value>
+        /// Treść zgłoszenia.
+        /// </value>
+        [Required(ErrorMessage = "Podaj treść zgłoszenia")]
+        [Display(Name = "Treść zgłoszenia")]
+        public String Tresc { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia kategorie zgłoszenia.
+        /// </summary>
+        /// <value>
+        /// Kategoria zgłoszenia.
+        /// </value>
+        [Required(ErrorMessage = "Wybierz kategorie zgłoszenia")]
+        public String Kategoria { get; set; }
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>
+        /// Status zgłoszenia, przyjmuje wartości:
+        /// "Przyjęte"
+        /// "W realizacji"
+        /// "Zakończone"
+        /// </value>
+        public String Status { get; set; }
+    }
+}
