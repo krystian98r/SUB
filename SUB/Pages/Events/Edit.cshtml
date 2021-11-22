@@ -6,9 +6,8 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Edycja</h1>
-
-<h4>Wydarzenie</h4>
+<p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
+<h2>Edycja wydarzenia</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -47,7 +46,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Wydarzenie.WynikWydarzenia" class="control-label">Wynik wydarzenia</label>
-                <input asp-for="Wydarzenie.WynikWydarzenia" class="form-control" />
+                <select asp-for="Wydarzenie.WynikWydarzenia" class="form-control">
+                    <option value=""></option>
+                    <option value="0">Wygrana gospodarzy</option>
+                    <option value="1">Wygrana gości</option>
+                    <option value="2">Remis</option>
+                </select>
                 <span asp-validation-for="Wydarzenie.WynikWydarzenia" class="text-danger"></span>
             </div>
             <div class="form-group">

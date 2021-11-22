@@ -10,11 +10,11 @@ using SUB.Models;
 
 namespace SUB.Pages.Coupons
 {
-    public class IndexModel : PageModel
+    public class ListModel : PageModel
     {
         private readonly SUB.Data.SUBContext _context;
 
-        public IndexModel(SUB.Data.SUBContext context)
+        public ListModel(SUB.Data.SUBContext context)
         {
             _context = context;
         }
@@ -24,6 +24,7 @@ namespace SUB.Pages.Coupons
         public async Task OnGetAsync()
         {
             Kupon = await _context.Kupon
+                .Include(k => k.Uzytkownik)
                 .Include(k => k.Wydarzenie).ToListAsync();
         }
     }

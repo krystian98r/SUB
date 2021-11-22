@@ -6,10 +6,9 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Szczegóły</h1>
-
+<p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
+<h2>Szczegóły wydarzenia</h2>
 <div>
-    <h4>Wydarzenie</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -19,12 +18,13 @@
             @Html.DisplayFor(model => model.Wydarzenie.Gospodarz)
         </dd>
         <dt class="col-sm-2">
-           Gość
+            Gość
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Wydarzenie.Gosc)
         </dd>
-        <dt class="col-sm-2">Kursy</dt><dd class="col-sm-10"></dd>
+        <dt class="col-sm-2">Kursy</dt>
+        <dd class="col-sm-10"></dd>
         <dt class="col-sm-2">
             Zwycięstwo gospodarzy
         </dt>

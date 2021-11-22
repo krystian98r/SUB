@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SUB.Models
 {
@@ -14,28 +17,22 @@ namespace SUB.Models
         /// Identyfikator kuponu.
         /// </value>
         public int Id { get; set; }
-        /// <summary>
-        /// Pobiera lub ustawia pole IdUzytkownik
-        /// </summary>
-        /// <value>
-        /// Identyfikator użytkownika, do którego należy kupon.
-        /// </value>
+        [Display(Name = "Użytkownik")]
+        [Required]
+        public String UzytkownikId { get; set; }
         public AspNetUsers Uzytkownik { get; set; }
-        public int? UzytkownikId { get; set; }
-        /// <summary>
-        /// Pobiera lub ustawia pole IdWydarzenia.
-        /// </summary>
-        /// <value>
-        /// Wydarzenie, którego dotyczy kupon.
-        /// </value>
-        public Wydarzenie Wydarzenie { get; set; }
+        [Display(Name = "Wydarzenie")]
         public int WydarzenieId { get; set; }
+        [Required(ErrorMessage = "Wybierz wydarzenie")]
+        public Wydarzenie Wydarzenie { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Srodki.
         /// </summary>
         /// <value>
         /// Środki przeznaczone na utworzenie tego kuponu.
         /// </value>
+        [Required(ErrorMessage = "Wybierz ilość środków jaką chcesz przeznaczyć")]
+        [Display(Name = "Środki")]
         public double Srodki { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole ObstawionyKurs.
@@ -46,6 +43,8 @@ namespace SUB.Models
         /// 1 - wygrana gości
         /// 2 - remis
         /// </value>
+        [Range(0, 2, ErrorMessage = "Wybierz obstawiany wynik wydarzenia")]
+        [Display(Name = "Obstawiony wynik")]
         public int ObstawionyKurs { get; set; }
     }
 }

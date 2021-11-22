@@ -24,6 +24,7 @@ namespace SUB.Pages.Coupons
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
             if (id == null)
             {
                 return NotFound();
@@ -54,7 +55,7 @@ namespace SUB.Pages.Coupons
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./List");
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿@page
 @model SUB.Areas.Events.Pages.CreateModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Tworzenie wydarzenia";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Tworzenie wydarzenia</h1>
-
-<h4>Wydarzenie</h4>
+<p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
+<h2>Nowe wydarzenie</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -43,11 +44,6 @@
                 <label asp-for="Wydarzenie.Data" class="control-label">Data wydarzenia</label>
                 <input asp-for="Wydarzenie.Data" class="form-control" />
                 <span asp-validation-for="Wydarzenie.Data" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Wydarzenie.WynikWydarzenia" class="control-label">Wynik wydarzenia</label>
-                <input asp-for="Wydarzenie.WynikWydarzenia" class="form-control" />
-                <span asp-validation-for="Wydarzenie.WynikWydarzenia" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Utwórz" class="btn btn-primary" />

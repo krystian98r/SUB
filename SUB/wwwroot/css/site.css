@@ -72,7 +72,6 @@ body {
 
 .subsite-header {
     font-size: 40px;
-    margin-top: 6px;
     font-weight: 500;
 }
 
@@ -98,4 +97,8 @@ body {
 .col-sm-10 {
     white-space: nowrap;
     width: auto;
+}
+
+.list-img {
+    height: 20px;
 }

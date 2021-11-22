@@ -23,6 +23,7 @@ namespace SUB.Pages.Contact
 
         public async Task OnGetAsync()
         {
+            if (!User.Identity.IsAuthenticated) RedirectToPage("/Account/Login", new { area = "Identity" });
             Zgloszenie = await _context.Zgloszenie
                 .Include(z => z.Uzytkownik).ToListAsync();
         }

@@ -1,27 +1,24 @@
 ﻿@page
 @model SUB.Pages.Coupons.CreateModel
-
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Kupony - nowy kupon";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
+<h2>Nowy kupon</h2>
 
-<h4>Kupon</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Kupon.UzytkownikId" class="control-label"></label>
-                <input asp-for="Kupon.UzytkownikId" class="form-control" />
-                <span asp-validation-for="Kupon.UzytkownikId" class="text-danger"></span>
-            </div>
+            <input asp-for="Kupon.UzytkownikId" class="form-control" value="@UserManager.GetUserId(User)" hidden/>
             <div class="form-group">
                 <label asp-for="Kupon.WydarzenieId" class="control-label"></label>
-                <select asp-for="Kupon.WydarzenieId" class ="form-control" asp-items="ViewBag.WydarzenieId"></select>
+                <select asp-for="Kupon.WydarzenieId" class="form-control" asp-items="ViewBag.WydarzenieId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Kupon.Srodki" class="control-label"></label>
@@ -30,18 +27,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="Kupon.ObstawionyKurs" class="control-label"></label>
-                <input asp-for="Kupon.ObstawionyKurs" class="form-control" />
+                <select asp-for="Kupon.ObstawionyKurs" class="form-control">
+                    <option value="null"></option>
+                    <option value="0">Wygrana gospodarzy</option>
+                    <option value="1">Wygrana gości</option>
+                    <option value="2">Remis</option>
+                </select>
                 <span asp-validation-for="Kupon.ObstawionyKurs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="List">Powrót do listy</a>
 </div>
 
 @section Scripts {

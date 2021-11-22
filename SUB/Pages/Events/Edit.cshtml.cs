@@ -25,6 +25,7 @@ namespace SUB.Areas.Events.Pages
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!User.Identity.IsAuthenticated) RedirectToPage("/Account/Login", new { area = "Identity" });
             if (id == null)
             {
                 return NotFound();

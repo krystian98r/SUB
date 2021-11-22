@@ -17,22 +17,6 @@
             Identyfikator kuponu.
             </value>
         </member>
-        <member name="P:SUB.Models.Kupon.Uzytkownik">
-            <summary>
-            Pobiera lub ustawia pole IdUzytkownik
-            </summary>
-            <value>
-            Identyfikator użytkownika, do którego należy kupon.
-            </value>
-        </member>
-        <member name="P:SUB.Models.Kupon.Wydarzenie">
-            <summary>
-            Pobiera lub ustawia pole IdWydarzenia.
-            </summary>
-            <value>
-            Wydarzenie, którego dotyczy kupon.
-            </value>
-        </member>
         <member name="P:SUB.Models.Kupon.Srodki">
             <summary>
             Pobiera lub ustawia pole Srodki.
@@ -122,14 +106,6 @@
             0 - zwycięstwo gospodarza
             1 - zwycięstro gościa
             2 - remis
-            </value>
-        </member>
-        <member name="P:SUB.Models.Zgloszenie.Id">
-            <summary>
-            Pobiera lub ustawia identyfikator - pole Id
-            </summary>
-            <value>
-            Identyfikator zgłoszenia.
             </value>
         </member>
         <member name="P:SUB.Models.Zgloszenie.UzytkownikId">

@@ -23,6 +23,7 @@ namespace SUB.Areas.Events.Pages
 
         public async Task OnGetAsync()
         {
+            if (!User.Identity.IsAuthenticated) RedirectToPage("/Account/Login", new { area = "Identity" });
             Wydarzenie = await _context.Wydarzenie.ToListAsync();
         }
     }

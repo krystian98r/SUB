@@ -2,43 +2,100 @@
 @model SUB.Pages.Coupons.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Kupon - szczegóły";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
+<p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
+<h2>Szczegóły kuponu</h2>
 <div>
     <h4>Kupon</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kupon.UzytkownikId)
+            @Html.DisplayNameFor(model => model.Kupon.Uzytkownik)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kupon.UzytkownikId)
+            @Html.DisplayFor(model => model.Kupon.Uzytkownik.UserName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Kupon.Wydarzenie)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kupon.Wydarzenie.Gosc)
+            @Html.DisplayFor(model => model.Kupon.Wydarzenie.SkrotWydarzenia)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kupon.Wydarzenie.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kupon.Wydarzenie.Data)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Kupon.Srodki)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kupon.Srodki)
+            @Html.DisplayFor(model => model.Kupon.Srodki) PLN
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Kupon.ObstawionyKurs)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kupon.ObstawionyKurs)
-        </dd>
+        @{ switch (Model.Kupon.ObstawionyKurs)
+            {
+                case 0:
+                    <dd class="col-sm-10">
+                        Wygrana gospodarzy
+                    </dd>
+                    <dt class="col-sm-2">Kurs</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Kupon.Wydarzenie.ZwyciestwoGospodarz)
+                    </dd>
+                    <dt class="col-sm-2">Potencjalna wygrana</dt>
+                    <dd class="col-sm-10">
+                        @(Model.Kupon.Wydarzenie.ZwyciestwoGospodarz*Model.Kupon.Srodki) PLN
+                    </dd>
+                    break;
+                case 1:
+                    <dd class="col-sm-10">
+                        Wygrana gości
+                    </dd>
+                    <dt class="col-sm-2">Kurs</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Kupon.Wydarzenie.ZwyciestwoGosc)
+                    </dd>
+                    <dt class="col-sm-2">Potencjalna wygrana</dt>
+                    <dd class="col-sm-10">
+                        @(Model.Kupon.Wydarzenie.ZwyciestwoGosc*Model.Kupon.Srodki) PLN
+                    </dd>
+                    break;
+                case 2:
+                    <dd class="col-sm-10">
+                        Remis
+                    </dd>
+                    <dt class="col-sm-2">Kurs</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Kupon.Wydarzenie.Remis)
+                    </dd>
+                    <dt class="col-sm-2">Potencjalna wygrana</dt>
+                    <dd class="col-sm-10">
+                        @(Model.Kupon.Wydarzenie.Remis*Model.Kupon.Srodki) PLN
+                    </dd>
+                    break;
+            }
+
+            string statusKuponu = "";
+            if (Model.Kupon.Wydarzenie.WynikWydarzenia == Model.Kupon.ObstawionyKurs) { statusKuponu = "Wygrany"; }
+            else if (Model.Kupon.Wydarzenie.WynikWydarzenia != null) { statusKuponu = "Przegrany"; }
+            else { statusKuponu = "-"; }
+
+            <dt class="col-sm-2">Status kuponu</dt>
+            <dd class="col-sm-10">
+                @statusKuponu
+            </dd>
+
+        }
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Kupon.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Kupon.Id">Edytuj</a> |
+    <a asp-page="./List">Powrót do listy</a>
 </div>

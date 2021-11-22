@@ -25,6 +25,7 @@ namespace SUB.Pages.Coupons
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
             if (id == null)
             {
                 return NotFound();
@@ -37,7 +38,8 @@ namespace SUB.Pages.Coupons
             {
                 return NotFound();
             }
-           ViewData["WydarzenieId"] = new SelectList(_context.Wydarzenie, "Id", "Gosc");
+            ViewData["UzytkownikId"] = new SelectList(_context.Set<AspNetUsers>(), "Id", "Id");
+            ViewData["WydarzenieId"] = new SelectList(_context.Wydarzenie, "Id", "SkrotWydarzenia");
             return Page();
         }
 
@@ -45,10 +47,6 @@ namespace SUB.Pages.Coupons
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
 
             _context.Attach(Kupon).State = EntityState.Modified;
 
@@ -68,7 +66,7 @@ namespace SUB.Pages.Coupons
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./List");
         }
 
         private bool KuponExists(int id)

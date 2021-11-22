@@ -41,23 +41,23 @@ namespace SUB.Models
         /// <value>
         /// Obowiązujący kurs na zwycięstwo gospodarza.
         /// </value>
-        [Display(Name = "Zwycięstwo gospodarza")]
-        public float? ZwyciestwoGospodarz { get; set; }
+        [Display(Name = "Gosp.")]
+        public double? ZwyciestwoGospodarz { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Gospodarz.
         /// </summary>
         /// <value>
         /// Obowiązujący kurs na zwycięstwo Gościa
         /// </value>
-        [Display(Name = "Zwycięstwo gości")]
-        public float? ZwyciestwoGosc { get; set; }
+        [Display(Name = "Goście")]
+        public double? ZwyciestwoGosc { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Gospodarz.
         /// </summary>
         /// <value>
         /// Obowiązujący kurs na remis.
         /// </value>
-        public float? Remis { get; set; }
+        public double? Remis { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole Gospodarz.
         /// </summary>
@@ -77,8 +77,14 @@ namespace SUB.Models
         /// 1 - zwycięstro gościa
         /// 2 - remis
         /// </value>
-        [Range(0, 2, ErrorMessage = "Wprowadź jedną z wartości:<br>0 - wygrana gospodarzy<br>1 - wygrana gości<br>2 - remis")]
         [Display(Name = "Wynik")]
         public int? WynikWydarzenia { get; set; }
+        public string SkrotWydarzenia
+        {
+            get
+            {
+                return string.Format("{0} vs {1}", Gospodarz, Gosc);
+            }
+        }
     }
 }

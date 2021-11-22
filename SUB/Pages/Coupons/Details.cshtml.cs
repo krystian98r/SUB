@@ -23,12 +23,14 @@ namespace SUB.Pages.Coupons
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
             if (id == null)
             {
                 return NotFound();
             }
 
             Kupon = await _context.Kupon
+                .Include(k => k.Uzytkownik)
                 .Include(k => k.Wydarzenie).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Kupon == null)

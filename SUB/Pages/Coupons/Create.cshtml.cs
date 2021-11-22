@@ -21,7 +21,9 @@ namespace SUB.Pages.Coupons
 
         public IActionResult OnGet()
         {
-        ViewData["WydarzenieId"] = new SelectList(_context.Wydarzenie, "Id", "Gosc");
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
+            ViewData["UzytkownikId"] = new SelectList(_context.Set<AspNetUsers>(), "Id", "UserName");
+            ViewData["WydarzenieId"] = new SelectList(_context.Wydarzenie, "Id", "SkrotWydarzenia");
             return Page();
         }
 
@@ -32,15 +34,11 @@ namespace SUB.Pages.Coupons
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
 
             _context.Kupon.Add(Kupon);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./List");
         }
     }
 }

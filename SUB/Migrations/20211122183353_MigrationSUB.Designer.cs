@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUB.Data;
 
 namespace SUB.Migrations
 {
     [DbContext(typeof(SUBContext))]
-    partial class SUBContextModelSnapshot : ModelSnapshot
+    [Migration("20211122183353_MigrationSUB")]
+    partial class MigrationSUB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,11 +88,10 @@ namespace SUB.Migrations
                     b.Property<int>("ObstawionyKurs")
                         .HasColumnType("int");
 
-                    b.Property<double>("Srodki")
-                        .HasColumnType("float");
+                    b.Property<float>("Srodki")
+                        .HasColumnType("real");
 
                     b.Property<string>("UzytkownikId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("WydarzenieId")
@@ -142,17 +143,17 @@ namespace SUB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("Remis")
-                        .HasColumnType("float");
+                    b.Property<float?>("Remis")
+                        .HasColumnType("real");
 
                     b.Property<int?>("WynikWydarzenia")
                         .HasColumnType("int");
 
-                    b.Property<double?>("ZwyciestwoGosc")
-                        .HasColumnType("float");
+                    b.Property<float?>("ZwyciestwoGosc")
+                        .HasColumnType("real");
 
-                    b.Property<double?>("ZwyciestwoGospodarz")
-                        .HasColumnType("float");
+                    b.Property<float?>("ZwyciestwoGospodarz")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -202,9 +203,7 @@ namespace SUB.Migrations
                 {
                     b.HasOne("SUB.Models.AspNetUsers", "Uzytkownik")
                         .WithMany()
-                        .HasForeignKey("UzytkownikId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UzytkownikId");
 
                     b.HasOne("SUB.Models.Wydarzenie", "Wydarzenie")
                         .WithMany()

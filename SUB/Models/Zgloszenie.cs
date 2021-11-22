@@ -10,12 +10,6 @@ namespace SUB.Models
 {
     public class Zgloszenie
     {
-        /// <summary>
-        /// Pobiera lub ustawia identyfikator - pole Id
-        /// </summary>
-        /// <value>
-        /// Identyfikator zgłoszenia.
-        /// </value>
         public int Id { get; set; }
         /// <summary>
         /// Pobiera lub ustawia identyfikator użytkownika dla zgłoszenia.
@@ -32,7 +26,7 @@ namespace SUB.Models
         /// Identyfikator użytkownika - połączenie z tabelą AspNetUser
         /// </value>
         [ForeignKey("UzytkownikId")]
-        public  AspNetUsers Uzytkownik { get; set; }
+        public AspNetUsers Uzytkownik { get; set; }
         /// <summary>
         /// Pobiera lub ustawia email.
         /// </summary>

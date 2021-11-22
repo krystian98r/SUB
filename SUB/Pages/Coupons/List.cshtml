@@ -1,0 +1,75 @@
+﻿@page
+@model SUB.Pages.Coupons.ListModel
+
+@{
+    ViewData["Title"] = "Kupony - lista kuponów";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
+<h2>Lista kuponów</h2>
+<p>
+    <a asp-page="Create">Utwórz nowy kupon</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kupon[0].Uzytkownik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kupon[0].Wydarzenie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kupon[0].Srodki)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kupon[0].ObstawionyKurs)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Kupon)
+        {
+            string style;
+            string obstawionyKurs = "";
+            if (item.ObstawionyKurs == item.Wydarzenie.WynikWydarzenia) { style = "background-color: rgb(196, 242, 208)"; }
+            else if (item.Wydarzenie.WynikWydarzenia != null) { style = "background-color: rgb(242, 202, 196)"; }
+            else { style = "background-color: none"; }
+
+            switch (item.ObstawionyKurs)
+            {
+                case 0:
+                    obstawionyKurs = "Wygrana gospodarzy";
+                    break;
+                case 1:
+                    obstawionyKurs = "Wygrana gości";
+                    break;
+                case 2:
+                    obstawionyKurs = "Remis";
+                    break;
+            }
+
+        <tr style="@style">
+            <td>
+                @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wydarzenie.SkrotWydarzenia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Srodki) PLN
+            </td>
+            <td>
+                @obstawionyKurs
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> |
+                <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+            </td>
+        </tr>
+    }
+        </tbody>
+    </table>

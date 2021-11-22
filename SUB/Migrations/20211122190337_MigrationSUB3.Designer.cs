@@ -10,8 +10,8 @@ using SUB.Data;
 namespace SUB.Migrations
 {
     [DbContext(typeof(SUBContext))]
-    [Migration("20211121182713_ModelMigration")]
-    partial class ModelMigration
+    [Migration("20211122190337_MigrationSUB3")]
+    partial class MigrationSUB3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,10 +91,8 @@ namespace SUB.Migrations
                     b.Property<double>("Srodki")
                         .HasColumnType("float");
 
-                    b.Property<int?>("UzytkownikId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UzytkownikId1")
+                    b.Property<string>("UzytkownikId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("WydarzenieId")
@@ -102,7 +100,7 @@ namespace SUB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UzytkownikId1");
+                    b.HasIndex("UzytkownikId");
 
                     b.HasIndex("WydarzenieId");
 
@@ -206,7 +204,9 @@ namespace SUB.Migrations
                 {
                     b.HasOne("SUB.Models.AspNetUsers", "Uzytkownik")
                         .WithMany()
-                        .HasForeignKey("UzytkownikId1");
+                        .HasForeignKey("UzytkownikId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SUB.Models.Wydarzenie", "Wydarzenie")
                         .WithMany()
