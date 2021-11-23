@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SUB.Data
 {
+    /// <summary>
+    /// Kontekst bazy danych dla dodatku Tożsamość
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext&lt;Microsoft.AspNetCore.Identity.IdentityUser&gt;" />
     public class IdentityContext : IdentityDbContext<IdentityUser>
     {
         public IdentityContext(DbContextOptions<IdentityContext> options)

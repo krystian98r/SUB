@@ -17,12 +17,36 @@ namespace SUB.Models
         /// Identyfikator kuponu.
         /// </value>
         public int Id { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia identyfikator użytkownika 
+        /// </summary>
+        /// <value>
+        /// Identyfikator użytkownika - klucz obcy
+        /// </value>
         [Display(Name = "Użytkownik")]
         [Required]
         public String UzytkownikId { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia użytkownika
+        /// </summary>
+        /// <value>
+        /// Odowołanie do klasy użytkownika systemu
+        /// </value>
         public AspNetUsers Uzytkownik { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia identyfikator wydarzenia
+        /// </summary>
+        /// <value>
+        /// Identyfikator wydarzenia - klucz obcy
+        /// </value>
         [Display(Name = "Wydarzenie")]
         public int WydarzenieId { get; set; }
+        /// <summary>
+        /// Pobiera lub ustawia wydarzenie
+        /// </summary>
+        /// <value>
+        /// Odwołanie do klasy Wydarzenie
+        /// </value>
         [Required(ErrorMessage = "Wybierz wydarzenie")]
         public Wydarzenie Wydarzenie { get; set; }
         /// <summary>

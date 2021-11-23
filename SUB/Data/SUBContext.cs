@@ -7,6 +7,10 @@ using SUB.Models;
 
 namespace SUB.Data
 {
+    /// <summary>
+    /// Kontekst bazy danych dla modelu danych
+    /// </summary>
+    /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
     public class SUBContext : DbContext
     {
         public SUBContext(DbContextOptions<SUBContext> options)
