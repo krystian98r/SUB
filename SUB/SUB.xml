@@ -4,6 +4,24 @@
         <name>SUB</name>
     </assembly>
     <members>
+        <member name="T:SUB.Data.IdentityContext">
+            <summary>
+            Kontekst bazy danych dla dodatku Tożsamość
+            </summary>
+            <seealso cref="!:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext&lt;Microsoft.AspNetCore.Identity.IdentityUser&gt;" />
+        </member>
+        <member name="T:SUB.Data.SUBContext">
+            <summary>
+            Kontekst bazy danych dla modelu danych
+            </summary>
+            <seealso cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+        </member>
+        <member name="T:SUB.Models.AspNetUsers">
+            <summary>
+            Klasa użytkownika z dodatku Tożsamość rozszerzona o połączenie z portfelem
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Identity.IdentityUser" />
+        </member>
         <member name="T:SUB.Models.Kupon">
             <summary>
             Klasa reprezentująca Kupon.
@@ -15,6 +33,38 @@
             </summary>
             <value>
             Identyfikator kuponu.
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.UzytkownikId">
+            <summary>
+            Pobiera lub ustawia identyfikator użytkownika 
+            </summary>
+            <value>
+            Identyfikator użytkownika - klucz obcy
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.Uzytkownik">
+            <summary>
+            Pobiera lub ustawia użytkownika
+            </summary>
+            <value>
+            Odowołanie do klasy użytkownika systemu
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.WydarzenieId">
+            <summary>
+            Pobiera lub ustawia identyfikator wydarzenia
+            </summary>
+            <value>
+            Identyfikator wydarzenia - klucz obcy
+            </value>
+        </member>
+        <member name="P:SUB.Models.Kupon.Wydarzenie">
+            <summary>
+            Pobiera lub ustawia wydarzenie
+            </summary>
+            <value>
+            Odwołanie do klasy Wydarzenie
             </value>
         </member>
         <member name="P:SUB.Models.Kupon.Srodki">
@@ -162,11 +212,6 @@
         <member name="T:SUB.Pages.AboutModel">
             <summary>
             Klasa reprezentująca podstronę "O nas" oraz jej funckje
-            </summary>
-        </member>
-        <member name="T:SUB.Pages.CouponsModel">
-            <summary>
-            Klasa reprezentująca podstronę "Kupony" oraz jej funckje
             </summary>
         </member>
         <member name="T:SUB.Pages.IndexModel">

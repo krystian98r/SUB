@@ -26,5 +26,7 @@ namespace SUB.Data
         
         public DbSet<SUB.Models.Kupon> Kupon { get; set; }
 
+        public DbSet<SUB.Models.AspNetUsers> AspNetUsers { get; set; }
+
     }
 }

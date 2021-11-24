@@ -21,10 +21,11 @@ namespace SUB.Areas.Events.Pages
 
         public IList<Wydarzenie> Wydarzenie { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            if (!User.Identity.IsAuthenticated) RedirectToPage("/Account/Login", new { area = "Identity" });
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
             Wydarzenie = await _context.Wydarzenie.ToListAsync();
+            return Page();
         }
     }
 }

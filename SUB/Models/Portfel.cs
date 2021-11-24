@@ -14,6 +14,7 @@ namespace SUB.Models
         public double Srodki { get; set; }
         [Display(Name ="Kod portfela")]
         [Required(ErrorMessage ="Podanie kodu jest wymagane")]
+        [StringLength(8, ErrorMessage = "Kod musi mieć 8 znaków długości!", MinimumLength = 8)]
         public string KodPortfela { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SUB.Data;
 using SUB.Models;
 
-namespace SUB.Pages.Contact
+namespace SUB.Pages.Temp
 {
     public class ListModel : PageModel
     {
@@ -19,14 +19,11 @@ namespace SUB.Pages.Contact
             _context = context;
         }
 
-        public IList<Zgloszenie> Zgloszenie { get;set; }
+        public IList<Portfel> Portfel { get;set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task OnGetAsync()
         {
-            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
-            Zgloszenie = await _context.Zgloszenie
-                .Include(z => z.Uzytkownik).ToListAsync();
-            return Page();
+            Portfel = await _context.Portfel.ToListAsync();
         }
     }
 }

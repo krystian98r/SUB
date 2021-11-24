@@ -12,7 +12,7 @@ namespace SUB.Models
     /// <seealso cref="Microsoft.AspNetCore.Identity.IdentityUser" />
     public class AspNetUsers : IdentityUser
     {
-        public Portfel Portfel { get; set; }
-        public int PortfelId { get; set; }
+        public Portfel? Portfel { get; set; }
+        public int? PortfelId { get; set; }
     }
 }

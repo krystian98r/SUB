@@ -10,8 +10,8 @@ using SUB.Data;
 namespace SUB.Migrations
 {
     [DbContext(typeof(SUBContext))]
-    [Migration("20211122190337_MigrationSUB3")]
-    partial class MigrationSUB3
+    [Migration("20211124223828_MigrationSUB")]
+    partial class MigrationSUB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,7 +116,8 @@ namespace SUB.Migrations
 
                     b.Property<string>("KodPortfela")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(8)")
+                        .HasMaxLength(8);
 
                     b.Property<double>("Srodki")
                         .HasColumnType("float");
@@ -144,17 +145,17 @@ namespace SUB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("Remis")
-                        .HasColumnType("real");
+                    b.Property<double?>("Remis")
+                        .HasColumnType("float");
 
                     b.Property<int?>("WynikWydarzenia")
                         .HasColumnType("int");
 
-                    b.Property<float?>("ZwyciestwoGosc")
-                        .HasColumnType("real");
+                    b.Property<double?>("ZwyciestwoGosc")
+                        .HasColumnType("float");
 
-                    b.Property<float?>("ZwyciestwoGospodarz")
-                        .HasColumnType("real");
+                    b.Property<double?>("ZwyciestwoGospodarz")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

@@ -114,7 +114,8 @@ namespace SUB.Migrations
 
                     b.Property<string>("KodPortfela")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(8)")
+                        .HasMaxLength(8);
 
                     b.Property<double>("Srodki")
                         .HasColumnType("float");
