@@ -28,5 +28,7 @@ namespace SUB.Data
 
         public DbSet<SUB.Models.AspNetUsers> AspNetUsers { get; set; }
 
+        public DbSet<SUB.Models.HistoriaPortfela> HistoriaPortfela { get; set; }
+
     }
 }

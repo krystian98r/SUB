@@ -64,5 +64,8 @@ namespace SUB.Models
         /// "Zakończone"
         /// </value>
         public String Status { get; set; }
+        [Display(Name = "Data")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
+        public DateTime DataUtworzenia { get; set; }
     }
 }

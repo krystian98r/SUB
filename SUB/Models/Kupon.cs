@@ -57,6 +57,7 @@ namespace SUB.Models
         /// </value>
         [Required(ErrorMessage = "Wybierz ilość środków jaką chcesz przeznaczyć")]
         [Display(Name = "Środki")]
+        [Range(1,10000, ErrorMessage = "Wybierz ilosc środków pomiędzy {1}, a {2} PLN.")]
         public double Srodki { get; set; }
         /// <summary>
         /// Pobiera lub ustawia pole ObstawionyKurs.
@@ -70,5 +71,7 @@ namespace SUB.Models
         [Range(0, 2, ErrorMessage = "Wybierz obstawiany wynik wydarzenia")]
         [Display(Name = "Obstawiony wynik")]
         public int ObstawionyKurs { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy  HH:mm}")]
+        public DateTime DataUtworzenia { get; set; }
     }
 }

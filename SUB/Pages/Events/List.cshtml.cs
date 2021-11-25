@@ -19,12 +19,33 @@ namespace SUB.Areas.Events.Pages
             _context = context;
         }
 
+        public string DataSort { get; set; }
+
         public IList<Wydarzenie> Wydarzenie { get;set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string sortOrder)
         {
             if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
             Wydarzenie = await _context.Wydarzenie.ToListAsync();
+
+            DataSort = sortOrder == "Data" ? "data_desc" : "Date";
+            IQueryable<Wydarzenie> query = from s in _context.Wydarzenie select s;
+
+            switch(sortOrder)
+            {
+                case "Data":
+                    query = query.OrderBy(s => s.Data);
+                    break;
+                case "data_desc":
+                    query = query.OrderByDescending(s => s.Data);
+                    break;
+                default:
+                    query = query.OrderBy(s => s.Data);
+                    break;
+            }
+
+            Wydarzenie = await query.AsNoTracking().ToListAsync();
+
             return Page();
         }
     }

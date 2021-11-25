@@ -51,25 +51,34 @@
                     break;
             }
 
-        <tr style="@style">
-            <td>
-                @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wydarzenie.SkrotWydarzenia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Srodki) PLN
-            </td>
-            <td>
-                @obstawionyKurs
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> |
-                <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
-            </td>
-        </tr>
-    }
-        </tbody>
-    </table>
+            <tr style="@style">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wydarzenie.SkrotWydarzenia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Srodki) PLN
+                </td>
+                <td>
+                    @obstawionyKurs
+                </td>
+                <td>
+                    @if (item.Wydarzenie.Data > DateTime.Now)
+                    {
+                    <p style="margin: 0;">
+                        <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> | 
+                        <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> | 
+                        <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+                    </p>
+                    }
+                    else
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

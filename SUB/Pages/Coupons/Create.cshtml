@@ -2,6 +2,7 @@
 @model SUB.Pages.Coupons.CreateModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+
 @{
     ViewData["Title"] = "Kupony - nowy kupon";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -9,16 +10,24 @@
 
 <p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
 <h2>Nowy kupon</h2>
-
 <hr />
+<p class="text-danger">@Model.ErrorMsg</p>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="Kupon.UzytkownikId" class="form-control" value="@UserManager.GetUserId(User)" hidden/>
+            <input asp-for="Kupon.UzytkownikId" class="form-control" value="@UserManager.GetUserId(User)" hidden />
             <div class="form-group">
                 <label asp-for="Kupon.WydarzenieId" class="control-label"></label>
-                <select asp-for="Kupon.WydarzenieId" class="form-control" asp-items="ViewBag.WydarzenieId"></select>
+                @if (string.IsNullOrEmpty(ViewContext.HttpContext.Request.Query["id"]))
+                {
+            <select asp-for="Kupon.WydarzenieId" class="form-control" asp-items="ViewBag.WydarzenieId"></select>
+                }
+                else
+                {
+            <input asp-for="Kupon.WydarzenieId" class="form-control" value="@ViewContext.HttpContext.Request.Query["id"]" hidden/>
+            <input asp-for="Wydarzenie.SkrotWydarzenia" class="form-control"  disabled />
+                }
             </div>
             <div class="form-group">
                 <label asp-for="Kupon.Srodki" class="control-label"></label>
@@ -43,7 +52,7 @@
 </div>
 
 <div>
-    <a asp-page="List">Powrót do listy</a>
+    <a href='javascript:history.go(-1)'>Powrót</a>
 </div>
 
 @section Scripts {

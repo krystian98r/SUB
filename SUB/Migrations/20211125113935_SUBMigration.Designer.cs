@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUB.Data;
 
 namespace SUB.Migrations
 {
     [DbContext(typeof(SUBContext))]
-    partial class SUBContextModelSnapshot : ModelSnapshot
+    [Migration("20211125113935_SUBMigration")]
+    partial class SUBMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,9 +94,6 @@ namespace SUB.Migrations
                     b.Property<double>("Srodki")
                         .HasColumnType("float");
 
-                    b.Property<double>("StanPortfela")
-                        .HasColumnType("float");
-
                     b.Property<string>("Zdarzenie")
                         .HasColumnType("nvarchar(max)");
 
@@ -111,9 +110,6 @@ namespace SUB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DataUtworzenia")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("ObstawionyKurs")
                         .HasColumnType("int");
@@ -198,9 +194,6 @@ namespace SUB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DataUtworzenia")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()

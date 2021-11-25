@@ -7,7 +7,6 @@
 }
 
 <p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
-<h2>Lista wydarzeń</h2>
 <p>
     <a asp-page="Create">Utwórz nowe wydarzenie</a>
 </p>
@@ -99,6 +98,7 @@
                 <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> |
                 <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+                <a asp-page="/Coupons/Create" asp-route-id="@item.Id">Obstaw</a>
             </td>
         </tr>
 }

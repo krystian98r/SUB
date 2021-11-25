@@ -26,6 +26,8 @@ namespace SUB.Pages.Wallet
         [BindProperty]
         public Portfel Portfel { get; set; }
 
+        public HistoriaPortfela HistoriaPortfela { get; set; }
+
         public PaymentModel(SUB.Data.SUBContext context, UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
@@ -50,13 +52,18 @@ namespace SUB.Pages.Wallet
                 await _context.SaveChangesAsync();
                 Uzytkownik.PortfelId = Portfel.Id;
                 await _context.SaveChangesAsync();
-            } else
+            }
+            else
             {
-                Portfel.Srodki = Math.Round(Portfel.Srodki + Wplata, 2); 
+                Portfel.Srodki = Math.Round(Portfel.Srodki + Wplata, 2);
                 _context.Attach(Portfel).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
+
+                HistoriaPortfela = new HistoriaPortfela((int)Uzytkownik.PortfelId, Wplata, Portfel.Srodki, "Wp³ata");
+                _context.HistoriaPortfela.Add(HistoriaPortfela);
+                await _context.SaveChangesAsync();
             }
-            
+
             return RedirectToPage("./Payment");
         }
 

@@ -1,0 +1,77 @@
+﻿@page
+@model SUB.Pages.Wallet.HistoryModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["ActivePage"] = ManageNavPages.History;
+    ViewData["Title"] = "Portfel - historia";
+}
+
+@{
+    var srodki = 0.0;
+    <h2>Środki:  @Model.Uzytkownik.Portfel.Srodki PLN</h2>
+    <hr />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoriaPortfela[0].Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoriaPortfela[0].Zdarzenie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoriaPortfela[0].StanPortfela)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoriaPortfela[0].Srodki)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.HistoriaPortfela)
+        {
+            string style;
+            string obstawionyKurs = "";
+            if (item.Srodki > 0) { style = "background-color: rgb(196, 242, 208)"; }
+            else { style = "background-color: rgb(242, 202, 196)"; };
+
+            <tr style="@style">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zdarzenie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StanPortfela) PLN
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Srodki) PLN
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HistoriaPortfela.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HistoriaPortfela.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./History"
+   asp-route-pageIndex="@(Model.HistoriaPortfela.PageIndex - 1)"
+   class="btn btn-primary @prevDisabled">
+    <<
+</a>
+<a asp-page="./History"
+   asp-route-pageIndex="@(Model.HistoriaPortfela.PageIndex + 1)"
+   class="btn btn-primary @nextDisabled">
+    >>
+</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

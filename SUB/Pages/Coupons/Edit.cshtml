@@ -14,7 +14,9 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Kupon.Id" />
+            <input type="hidden" asp-for="Kupon.DataUtworzenia" />
             <input asp-for="Kupon.UzytkownikId" class="form-control" hidden />
+            <input asp-for="SrodkiPrzed" hidden />
             <div class="form-group">
                 <label asp-for="Kupon.WydarzenieId" class="control-label"></label>
                 <select asp-for="Kupon.WydarzenieId" class="form-control" asp-items="ViewBag.WydarzenieId"></select>

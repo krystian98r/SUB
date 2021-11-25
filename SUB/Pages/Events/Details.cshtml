@@ -9,6 +9,24 @@
 <p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
 <h2>Szczegóły wydarzenia</h2>
 <div>
+    @{ 
+        var wynikWydarzenia = "";
+        switch(Model.Wydarzenie.WynikWydarzenia)
+        {
+            case 0:
+                wynikWydarzenia="Wygrana gospodarzy";
+                break;
+            case 1:
+                wynikWydarzenia="Wygrana gości";
+                break;
+            case 2:
+                wynikWydarzenia = "Remis";
+                break;
+            default:
+                wynikWydarzenia = "-";
+                break;
+        }
+        }
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -53,11 +71,12 @@
             Wynik wydarzenia
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Wydarzenie.WynikWydarzenia)
+            @wynikWydarzenia
         </dd>
     </dl>
 </div>
 <div>
+    <a asp-page="/Coupons/Create" asp-route-id="@Model.Wydarzenie.Id" class="btn btn-primary">Obstaw</a> |
     <a asp-page="./Edit" asp-route-id="@Model.Wydarzenie.Id">Edytuj</a> |
     <a asp-page="./List">Powrót do listy</a>
 </div>

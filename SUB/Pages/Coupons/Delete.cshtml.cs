@@ -21,6 +21,8 @@ namespace SUB.Pages.Coupons
 
         [BindProperty]
         public Kupon Kupon { get; set; }
+        public HistoriaPortfela HistoriaPortfela { get; set; }
+        public AspNetUsers Uzytkownik { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -51,6 +53,16 @@ namespace SUB.Pages.Coupons
 
             if (Kupon != null)
             {
+                Uzytkownik = _context.AspNetUsers.Include(k => k.Portfel).SingleOrDefault(x => x.Id == Kupon.UzytkownikId);
+
+                if (Uzytkownik.Portfel != null)
+                {
+                    Uzytkownik.Portfel.Srodki += Kupon.Srodki;
+                    
+                    HistoriaPortfela = new HistoriaPortfela((int)Uzytkownik.PortfelId, Kupon.Srodki, Uzytkownik.Portfel.Srodki, "Zwrot kuponu");
+                    _context.HistoriaPortfela.Add(HistoriaPortfela);
+                }
+
                 _context.Kupon.Remove(Kupon);
                 await _context.SaveChangesAsync();
             }

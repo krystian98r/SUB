@@ -22,6 +22,13 @@ namespace SUB.Pages.Coupons
 
         [BindProperty]
         public Kupon Kupon { get; set; }
+        public HistoriaPortfela HistoriaPortfela { get; set; }
+        [BindProperty]
+        public AspNetUsers Uzytkownik { get; set; }
+        public Portfel Portfel { get; set; }
+        [BindProperty]
+        public double SrodkiPrzed { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,8 +43,14 @@ namespace SUB.Pages.Coupons
 
             if (Kupon == null)
             {
+                SrodkiPrzed = 0;
                 return NotFound();
             }
+            else
+            {
+                SrodkiPrzed = Kupon.Srodki;
+            }
+
             ViewData["UzytkownikId"] = new SelectList(_context.Set<AspNetUsers>(), "Id", "Id");
             ViewData["WydarzenieId"] = new SelectList(_context.Wydarzenie, "Id", "SkrotWydarzenia");
             return Page();
@@ -48,23 +61,19 @@ namespace SUB.Pages.Coupons
         public async Task<IActionResult> OnPostAsync()
         {
 
-            _context.Attach(Kupon).State = EntityState.Modified;
 
-            try
+            if (SrodkiPrzed != Kupon.Srodki)
             {
-                await _context.SaveChangesAsync();
+                var roznica = SrodkiPrzed - Kupon.Srodki;
+
+                Uzytkownik = await _context.AspNetUsers.Include(k => k.Portfel).FirstOrDefaultAsync(x => x.Id.Equals(Kupon.UzytkownikId));
+                Uzytkownik.Portfel.Srodki += roznica;
+                HistoriaPortfela = new HistoriaPortfela((int)Uzytkownik.PortfelId, roznica, Uzytkownik.Portfel.Srodki, "Edycja kuponu");
+                _context.HistoriaPortfela.Add(HistoriaPortfela);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KuponExists(Kupon.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.Attach(Kupon).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
 
             return RedirectToPage("./List");
         }
