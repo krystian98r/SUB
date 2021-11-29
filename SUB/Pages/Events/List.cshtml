@@ -1,5 +1,8 @@
 ﻿@page
 @model SUB.Areas.Events.Pages.ListModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityUser> RoleManager
 
 @{
     ViewData["Title"] = "Lista wydarzeń";
@@ -49,58 +52,66 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Wydarzenie) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gospodarz)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gosc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZwyciestwoGospodarz)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZwyciestwoGosc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Remis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            @{
-                switch (item.WynikWydarzenia)
-                {
-                    case 0:
-                        <td>
-                            Wygrana gospodarzy
-                        </td>
-                        break;
-                    case 1:
-                        <td>
-                            Wygrana gości
-                        </td>
-                        break;
-                    case 2:
-                        <td>
-                            Remis
-                        </td>
-                        break;
-                    default:
-                        <td>
-                            -
-                        </td>
-                        break;
+        @foreach (var item in Model.Wydarzenie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gospodarz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gosc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZwyciestwoGospodarz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZwyciestwoGosc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                @{
+                    switch (item.WynikWydarzenia)
+                    {
+                        case 0:
+                            <td>
+                                Wygrana gospodarzy
+                            </td>
+                            break;
+                        case 1:
+                            <td>
+                                Wygrana gości
+                            </td>
+                            break;
+                        case 2:
+                            <td>
+                                Remis
+                            </td>
+                            break;
+                        default:
+                            <td>
+                                -
+                            </td>
+                            break;
+                    }
+                    bool isBO = false;
+                    if (User.IsInRole("Admin")) isBO = true;
                 }
-            }
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> |
-                <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
-                <a asp-page="/Coupons/Create" asp-route-id="@item.Id">Obstaw</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @RoleManager.Roles
+                    <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a>
+                    @if (isBO)
+                    {
+                        <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+                    }
+                    
+                    <a asp-page="/Coupons/Create" asp-route-id="@item.Id">Obstaw</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
