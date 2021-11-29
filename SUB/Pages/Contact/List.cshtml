@@ -1,9 +1,14 @@
 ﻿@page
 @model SUB.Pages.Contact.ListModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Kontakt - lista zgłoszeń";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    bool isTT = false;
+    if (User.IsInRole("TechnicalTeam")) isTT = true;
 }
 
 <p class="subsite-header"><img src="~/img/contact.png" />Kontakt <hr /> </p>
@@ -17,9 +22,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Zgloszenie[0].DataUtworzenia)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Zgloszenie[0].Uzytkownik)
-            </th>
+            @if (isTT)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Zgloszenie[0].Uzytkownik)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Zgloszenie[0].Email)
             </th>
@@ -36,31 +44,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Zgloszenie) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataUtworzenia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tresc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img" /></a>
-                <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Zgloszenie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataUtworzenia)
+                </td>
+                @if (isTT)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tresc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img" /></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

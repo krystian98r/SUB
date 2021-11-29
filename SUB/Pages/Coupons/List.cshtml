@@ -1,22 +1,48 @@
 ﻿@page
 @model SUB.Pages.Coupons.ListModel
-
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Kupony - lista kuponów";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    bool isBO = false;
+    if (User.IsInRole("BookmakerObserver")) isBO = true;
 }
 
 <p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
-<h2>Lista kuponów</h2>
+@if (isBO)
+{
+    <h2>Lista kuponów</h2>
+}
+else
+{
+    <h2>Twoje kupony</h2>
+}
 <p>
     <a asp-page="Create">Utwórz nowy kupon</a>
 </p>
+<form asp-page="./List" method="get">
+    <table style="margin-bottom: 20px;">
+        <tr>
+            <td class="search-table">
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" asp-for="@Model.CurrentFilter" />
+            </td>
+            <td class="search-table">
+                <input type="submit" value="Szukaj" class="btn btn-primary" /> |
+                <a asp-page="./List">Usuń filtry</a>
+            </td>
+        </tr>
+    </table>
+</form>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Kupon[0].Uzytkownik)
-            </th>
+            @if (isBO)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Kupon[0].Uzytkownik)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Kupon[0].Wydarzenie)
             </th>
@@ -52,9 +78,12 @@
             }
 
             <tr style="@style">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
-                </td>
+                @if (isBO)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Uzytkownik.UserName)
+                    </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Wydarzenie.SkrotWydarzenia)
                 </td>
@@ -67,11 +96,11 @@
                 <td>
                     @if (item.Wydarzenie.Data > DateTime.Now)
                     {
-                    <p style="margin: 0;">
-                        <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> | 
-                        <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> | 
-                        <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
-                    </p>
+                        <p style="margin: 0;">
+                            <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a> |
+                            <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
+                        </p>
                     }
                     else
                     {
@@ -82,3 +111,17 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Kupon.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Kupon.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./List"
+   asp-route-pageIndex="@(Model.Kupon.PageIndex - 1)"
+   class="btn btn-primary @prevDisabled"> <<
+</a>
+<a asp-page="./List"
+   asp-route-pageIndex="@(Model.Kupon.PageIndex + 1)"
+   class="btn btn-primary @nextDisabled"> >>
+</a>

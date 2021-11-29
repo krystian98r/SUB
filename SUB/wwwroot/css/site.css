@@ -146,3 +146,15 @@ body {
 .navbar-brand {
     color: white !important;
 }
+
+.search-table > * {
+    height: 36px;
+}
+
+.search-table > * > * {
+    height: 26px;
+}
+
+.search-table {
+    padding: 0 10px;
+}

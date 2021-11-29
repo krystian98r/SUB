@@ -23,6 +23,7 @@ namespace SUB.Areas.Events.Pages
         public IActionResult OnGet()
         {
             if(!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
+            if (!User.IsInRole("BookmakerObserver")) return RedirectToPage("/Permissions");
             return Page();
         }
 

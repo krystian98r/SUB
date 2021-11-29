@@ -19,8 +19,10 @@ namespace SUB.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("SUBContext")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityContext>();
+                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //    .AddEntityFrameworkStores<IdentityContext>();
+                services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<IdentityContext>().AddDefaultUI();
             });
         }
     }

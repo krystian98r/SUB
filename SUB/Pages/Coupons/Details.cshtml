@@ -1,6 +1,6 @@
 ﻿@page
 @model SUB.Pages.Coupons.DetailsModel
-@using System 
+@using System
 
 @{
     ViewData["Title"] = "Kupon - szczegóły";
@@ -10,7 +10,6 @@
 <p class="subsite-header"><img src="~/img/coupons.png" />Kupony <hr /> </p>
 <h2>Szczegóły kuponu</h2>
 <div>
-    <h4>Kupon</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -29,7 +28,7 @@
             @Html.DisplayNameFor(model => model.Kupon.Wydarzenie)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kupon.Wydarzenie.SkrotWydarzenia)
+            <a asp-page="/Events/Details" asp-route-id="@Model.Kupon.WydarzenieId">@Html.DisplayFor(model => model.Kupon.Wydarzenie.SkrotWydarzenia)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Kupon.Wydarzenie.Data)
@@ -58,7 +57,7 @@
                     </dd>
                     <dt class="col-sm-2">Potencjalna wygrana</dt>
                     <dd class="col-sm-10">
-                        @(Model.Kupon.Wydarzenie.ZwyciestwoGospodarz*Model.Kupon.Srodki) PLN
+                        @Model.Kupon.PotencjalnaWygrana PLN
                     </dd>
                     break;
                 case 1:
@@ -71,7 +70,7 @@
                     </dd>
                     <dt class="col-sm-2">Potencjalna wygrana</dt>
                     <dd class="col-sm-10">
-                        @(Model.Kupon.Wydarzenie.ZwyciestwoGosc*Model.Kupon.Srodki) PLN
+                        @Model.Kupon.PotencjalnaWygrana PLN
                     </dd>
                     break;
                 case 2:
@@ -84,7 +83,7 @@
                     </dd>
                     <dt class="col-sm-2">Potencjalna wygrana</dt>
                     <dd class="col-sm-10">
-                        @(Model.Kupon.Wydarzenie.Remis*Model.Kupon.Srodki) PLN
+                        @Model.Kupon.PotencjalnaWygrana PLN
                     </dd>
                     break;
             }
@@ -92,6 +91,7 @@
             string statusKuponu = "";
             if (Model.Kupon.Wydarzenie.WynikWydarzenia == Model.Kupon.ObstawionyKurs) { statusKuponu = "Wygrany"; }
             else if (Model.Kupon.Wydarzenie.WynikWydarzenia != null) { statusKuponu = "Przegrany"; }
+            else if (Model.Kupon.Wydarzenie.Data < DateTime.Now) { statusKuponu = "Czeka na rozliczenie"; }
             else { statusKuponu = "-"; }
 
             <dt class="col-sm-2">Status kuponu</dt>
@@ -102,6 +102,9 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Kupon.Id">Edytuj</a> |
-    <a asp-page="./List">Powrót do listy</a>
+    @if (Model.Kupon.Wydarzenie.Data > DateTime.Now)
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Kupon.Id">Edytuj | </a>
+    }
+    <a href='javascript:history.go(-1)'>Powrót do listy</a>
 </div>

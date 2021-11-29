@@ -17,7 +17,7 @@
             <input type="hidden" asp-for="Zgloszenie.DataUtworzenia" />
             <div class="form-group">
                 <label asp-for="Zgloszenie.UzytkownikId" class="control-label"></label>
-                <select asp-for="Zgloszenie.UzytkownikId" class="form-control" asp-items="ViewBag.UzytkownikId"></select>
+                <select asp-for="Zgloszenie.UzytkownikId" class="form-control" asp-items="ViewBag.UzytkownikId" hidden></select>
                 <span asp-validation-for="Zgloszenie.UzytkownikId" class="text-danger"></span>
             </div>
             <div class="form-group">

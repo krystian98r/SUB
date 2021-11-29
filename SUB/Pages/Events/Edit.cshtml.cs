@@ -22,10 +22,12 @@ namespace SUB.Areas.Events.Pages
 
         [BindProperty]
         public Wydarzenie Wydarzenie { get; set; }
+        public List<Kupon> wygraneKupony { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (!User.Identity.IsAuthenticated) RedirectToPage("/Account/Login", new { area = "Identity" });
+            if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
+            if (!User.IsInRole("BookmakerObserver")) return RedirectToPage("/Permissions");
             if (id == null)
             {
                 return NotFound();
@@ -37,6 +39,9 @@ namespace SUB.Areas.Events.Pages
             {
                 return NotFound();
             }
+
+            if (Wydarzenie.WynikWydarzenia != null) return RedirectToPage("/Index");
+
             return Page();
         }
 
@@ -54,6 +59,20 @@ namespace SUB.Areas.Events.Pages
             try
             {
                 await _context.SaveChangesAsync();
+
+                if(Wydarzenie.WynikWydarzenia != null) {
+                    var wynik = Wydarzenie.WynikWydarzenia;
+                    var id = Wydarzenie.Id;
+                    wygraneKupony = await _context.Kupon.Include(k => k.Uzytkownik).Include(k => k.Wydarzenie).Where(x => x.ObstawionyKurs == wynik && x.WydarzenieId == id).ToListAsync();
+                    wygraneKupony.ForEach(a =>
+                    {
+                        AspNetUsers uzytkownik = _context.AspNetUsers.Include(k => k.Portfel).Where(x => x.Id.Equals(a.UzytkownikId)).FirstOrDefault();
+                        uzytkownik.Portfel.Srodki += a.PotencjalnaWygrana;
+                        HistoriaPortfela historiaPortfela = new HistoriaPortfela((int)a.Uzytkownik.PortfelId, a.PotencjalnaWygrana, a.Uzytkownik.Portfel.Srodki, "Wygrana");
+                        _context.HistoriaPortfela.Add(historiaPortfela);
+                        _context.SaveChanges();
+                    });
+                }
             }
             catch (DbUpdateConcurrencyException)
             {

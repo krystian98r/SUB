@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace SUB.Pages.Coupons
     public class DeleteModel : PageModel
     {
         private readonly SUB.Data.SUBContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DeleteModel(SUB.Data.SUBContext context)
+        public DeleteModel(SUB.Data.SUBContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -27,6 +30,7 @@ namespace SUB.Pages.Coupons
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
+
             if (id == null)
             {
                 return NotFound();
@@ -34,6 +38,8 @@ namespace SUB.Pages.Coupons
 
             Kupon = await _context.Kupon
                 .Include(k => k.Wydarzenie).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Kupon.Wydarzenie.Data < DateTime.Now || (!Kupon.UzytkownikId.Equals(_userManager.GetUserId(User)) && !User.IsInRole("BookmakerObserver"))) return RedirectToPage("/Index");
 
             if (Kupon == null)
             {

@@ -25,6 +25,7 @@ namespace SUB.Areas.Events.Pages
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (!User.Identity.IsAuthenticated) return RedirectToPage("/Account/Login", new { area = "Identity" });
+            if (!User.IsInRole("BookmakerObserver")) return RedirectToPage("/Permissions");
 
             if (id == null)
             {

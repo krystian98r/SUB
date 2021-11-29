@@ -2,17 +2,47 @@
 @model SUB.Areas.Events.Pages.ListModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-@inject RoleManager<IdentityUser> RoleManager
 
 @{
     ViewData["Title"] = "Lista wydarzeń";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    bool isBO = false;
+    if (User.IsInRole("BookmakerObserver")) isBO = true;
 }
 
-<p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe <hr /> </p>
-<p>
-    <a asp-page="Create">Utwórz nowe wydarzenie</a>
-</p>
+<p class="subsite-header"><img src="~/img/events.png" />Wydarzenia sportowe  <hr /></p>
+@if (isBO)
+{
+    <p>
+        <a asp-page="Create">Utwórz nowe wydarzenie</a>
+    </p>
+}
+<form asp-page="./List" method="get">
+    <table style="margin-bottom: 20px;">
+        <tr>
+            <td colspan="3" class="search-table">
+                Nazwa zespołu
+            </td>
+        </tr>
+        <tr>
+            <td class="search-table">
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" asp-for="@Model.CurrentFilter" />
+            </td>
+            <td class="search-table">
+                <select name="EventTime" value="@Model.EventTime" asp-for="@Model.EventTime">
+                    <option value="future">Nadchodzące wydarzenia</option>
+                    <option value="past">Ostatnie wydarzenia</option>
+                    <option value="all">Wszystkie wydarzenia</option>
+                </select>
+            </td>
+            <td class="search-table">
+                <input type="submit" value="Szukaj" class="btn btn-primary" /> |
+                <a asp-page="./List">Usuń filtry</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -34,20 +64,32 @@
                 @Html.DisplayNameFor(model => model.Wydarzenie[0].Gosc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGospodarz)
+                <a asp-page="./List" asp-route-sortOrder="@Model.GospSort" asp-route-currentFilter="@Model.CurrentFilter" asp-route-eventTime="@Model.EventTime">
+                    @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGospodarz)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGosc)
+                <a asp-page="./List" asp-route-sortOrder="@Model.GoscSort" asp-route-currentFilter="@Model.CurrentFilter" asp-route-eventTime="@Model.EventTime">
+                    @Html.DisplayNameFor(model => model.Wydarzenie[0].ZwyciestwoGosc)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Wydarzenie[0].Remis)
+                <a asp-page="./List" asp-route-sortOrder="@Model.RemisSort" asp-route-currentFilter="@Model.CurrentFilter" asp-route-eventTime="@Model.EventTime">
+                    @Html.DisplayNameFor(model => model.Wydarzenie[0].Remis)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Wydarzenie[0].Data)
+                <a asp-page="./List" asp-route-sortOrder="@Model.DataSort" asp-route-currentFilter="@Model.CurrentFilter" asp-route-eventTime="@Model.EventTime">
+                    @Html.DisplayNameFor(model => model.Wydarzenie[0].Data)
+                </a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wydarzenie[0].WynikWydarzenia)
-            </th>
+            @if (Model.EventTime.Equals("past") || Model.EventTime.Equals("all"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Wydarzenie[0].WynikWydarzenia)
+                </th>
+            }
+
             <th></th>
         </tr>
     </thead>
@@ -74,44 +116,66 @@
                     @Html.DisplayFor(modelItem => item.Data)
                 </td>
                 @{
-                    switch (item.WynikWydarzenia)
+                    if (Model.EventTime.Equals("past") || Model.EventTime.Equals("all"))
                     {
-                        case 0:
-                            <td>
-                                Wygrana gospodarzy
-                            </td>
-                            break;
-                        case 1:
-                            <td>
-                                Wygrana gości
-                            </td>
-                            break;
-                        case 2:
-                            <td>
-                                Remis
-                            </td>
-                            break;
-                        default:
-                            <td>
-                                -
-                            </td>
-                            break;
+                        switch (item.WynikWydarzenia)
+                        {
+                            case 0:
+                                <td>
+                                    Wygrana gospodarzy
+                                </td>
+                                break;
+                            case 1:
+                                <td>
+                                    Wygrana gości
+                                </td>
+                                break;
+                            case 2:
+                                <td>
+                                    Remis
+                                </td>
+                                break;
+                            default:
+                                <td>
+                                    -
+                                </td>
+                                break;
+                        }
                     }
-                    bool isBO = false;
-                    if (User.IsInRole("Admin")) isBO = true;
                 }
                 <td>
-                    @RoleManager.Roles
                     <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/img/details.png" class="list-img" /></a>
                     @if (isBO)
                     {
                         <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" class="list-img"></a>
                         <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" class="list-img" /></a>
                     }
-                    
-                    <a asp-page="/Coupons/Create" asp-route-id="@item.Id">Obstaw</a>
+                    @if (item.Data > DateTime.Now)
+                    {
+                        <a asp-page="/Coupons/Create" asp-route-id="@item.Id">Obstaw</a>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Wydarzenie.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Wydarzenie.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./List"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Wydarzenie.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    <<
+</a>
+<a asp-page="./List"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Wydarzenie.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    >>
+</a>
